@@ -14,6 +14,3 @@ def generate_image(prompt: str, filename: str = "output.png"):
     image.save(filename)
     print(f"Сохранено: {filename}")
     return image
-
-
-generate_image("a girl with big book")

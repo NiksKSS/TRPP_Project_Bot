@@ -16,7 +16,3 @@ def vqa(image_path: str, question: str) -> str:
     idx = outputs.logits.argmax(-1).item()
     return model.config.id2label[idx]
 
-
-# Вызов
-answer = vqa("image copy.png", "who is in the image?")
-print(answer)

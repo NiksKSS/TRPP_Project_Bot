@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 from ocr import ocr
+from text_to_image import generate_image
 import logging
 import pytesseract
 from bot.core.config import settings
@@ -21,6 +22,11 @@ class MLService:
         """Распознование текста по фото."""
         logger.info(f"OCR processing: {image_path}")
         return ocr(image_path)
+
+    def generate_image(self, prompt: str, output_path: str) -> str:
+        """Генерация изображения по тексту"""
+        logger.info(f"Generating: {prompt} → {output_path}")
+        return generate_image(prompt, output_path)
 
 
 ml_service = MLService()

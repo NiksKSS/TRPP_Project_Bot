@@ -5,3 +5,7 @@ pydantic-settings
 aiofiles
 pytesseract
 Pillow
+diffusers
+torch
+accelerate
+transformers
