@@ -12,6 +12,7 @@ PRIVATE_COMMANDS = [
     types.BotCommand(command="/help", description="Справка по командам"),
     types.BotCommand(command="/photo_to_text", description="Распознать текст с фото"),
     types.BotCommand(command="/text_to_photo", description="Сгенерировать картинку"),
+    types.BotCommand(command="/ask_from_image", description="Вопрос по фото"),
 ]
 
 

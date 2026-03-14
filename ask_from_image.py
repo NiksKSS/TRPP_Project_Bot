@@ -15,4 +15,3 @@ def vqa(image_path: str, question: str) -> str:
     outputs = model(**inputs)
     idx = outputs.logits.argmax(-1).item()
     return model.config.id2label[idx]
-
