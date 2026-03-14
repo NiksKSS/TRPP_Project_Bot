@@ -1,0 +1,13 @@
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    """Настройки бота."""
+    bot_token: str
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
+
+
+settings = Settings()
