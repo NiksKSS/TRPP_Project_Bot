@@ -5,6 +5,7 @@ def generate_image(prompt: str, filename: str = "output.png"):
     pipe = StableDiffusionXLPipeline.from_pretrained(
         "stabilityai/stable-diffusion-xl-base-1.0",
         torch_dtype=torch.float16,
+        local_files_only=True
     )
     pipe = pipe.to("mps")
     
@@ -14,4 +15,4 @@ def generate_image(prompt: str, filename: str = "output.png"):
     return image
 
 # Вызов
-generate_image("a cat sitting on a table, photorealistic")
+generate_image("a girl with big book")
