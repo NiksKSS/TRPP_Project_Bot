@@ -3,7 +3,8 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     """Настройки бота."""
-    bot_token: str
+
+    telegram_bot_token: str
 
     class Config:
         env_file = ".env"
