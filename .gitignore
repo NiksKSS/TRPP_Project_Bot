@@ -21,3 +21,7 @@ temp/*
 *.png
 *.jpg
 output.png
+
+vilt-model/
+*.bin
+*.safetensors

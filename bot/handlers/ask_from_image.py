@@ -13,9 +13,9 @@ vqa_sessions = {}
 @router.message(Command("ask_from_image"))
 async def cmd_ask_from_image(message: types.Message):
     await message.answer(
-        "**Режим вопросов по изображению!**\n\n"
-        "1️) Отправь фото\n"
-        "2️) Напиши вопрос по этому фото\n\n"
+        "Режим вопросов по изображению!\n\n"
+        "1️)Отправь фото\n"
+        "2️)Напиши вопрос по этому фото\n\n"
     )
 
 
@@ -34,7 +34,7 @@ async def handle_photo_for_vqa(message: types.Message):
         )
     except FileNotFoundError:
         await message.answer(
-            "**Ошибка:** файл изображения не найден.\n"
+            "Ошибка: файл изображения не найден.\n"
             "Пожалуйста, отправь фото заново командой /ask_from_image"
         )
         vqa_sessions.pop(message.from_user.id, None)

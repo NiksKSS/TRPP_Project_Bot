@@ -36,11 +36,11 @@ async def handle_photo_for_ocr(message: types.Message):
         os.remove(file_path)
     except FileNotFoundError:
         await message.answer(
-            "**Ошибка:** файл не найден.\n" "Попробуйте отправить фото ещё раз."
+            "Ошибка: файл не найден.\n" "Попробуйте отправить фото ещё раз."
         )
     except PermissionError:
         await message.answer(
-            "**Ошибка:** нет доступа к файлу.\n" "Попробуйте отправить фото ещё раз."
+            "Ошибка: нет доступа к файлу.\n" "Попробуйте отправить фото ещё раз."
         )
     except Exception:
         await message.answer("Попробуйте отправить другое фото.")

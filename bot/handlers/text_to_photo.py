@@ -17,17 +17,9 @@ async def cmd_text_to_photo(message: types.Message):
 async def handle_prompt_for_generation(message: types.Message):
     """Обработка запроса на генерацию"""
     prompt = message.text.strip()
-    if len(prompt) < 10:
-        await message.answer(
-            "Описание слишком короткое.\n"
-            "Пожалуйста, опиши картинку подробнее (минимум 10 символов)."
-        )
-        return
     output_path = f"temp/gen_{uuid.uuid4().hex}.png"
     os.makedirs("temp", exist_ok=True)
-
     await message.answer("Генерирую... Это займёт около 5 минут.")
-
     try:
         result_path = await asyncio.to_thread(
             ml_service.generate_image, prompt, output_path
@@ -35,6 +27,5 @@ async def handle_prompt_for_generation(message: types.Message):
         with open(result_path, "rb") as image:
             await message.answer_photo(photo=image, caption=f"По запросу: «{prompt}»")
         os.remove(result_path)
-
     except Exception as e:
         await message.answer(f"Ошибка генерации: {type(e).__name__}\n" f"Детали: {e}")
