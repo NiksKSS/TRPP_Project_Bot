@@ -1,7 +1,8 @@
 from aiogram import Router
-from .handlers import start, help
+from .handlers import start, help, photo_to_text
 
 router = Router()
 
 router.include_router(start.router)
 router.include_router(help.router)
+router.include_router(photo_to_text.router)

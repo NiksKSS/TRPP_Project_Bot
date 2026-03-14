@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     """Настройки бота."""
 
     telegram_bot_token: str
+    tesseract_path: str
 
     class Config:
         env_file = ".env"

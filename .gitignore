@@ -10,9 +10,14 @@ models/*.pth
 models/*.bin
 models/*.onnx
 temp/*
+*.tmp
 
 .idea/
 .vscode/
 
 .ruff_cache/
 .black
+
+*.png
+*.jpg
+output.png

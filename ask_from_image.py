@@ -1,8 +1,13 @@
 from transformers import ViltProcessor, ViltForQuestionAnswering
 from PIL import Image
 
-processor = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa", local_files_only=True)
-model = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa", local_files_only=True)
+processor = ViltProcessor.from_pretrained(
+    "dandelin/vilt-b32-finetuned-vqa", local_files_only=True
+)
+model = ViltForQuestionAnswering.from_pretrained(
+    "dandelin/vilt-b32-finetuned-vqa", local_files_only=True
+)
+
 
 def vqa(image_path: str, question: str) -> str:
     image = Image.open(image_path).convert("RGB")
@@ -10,6 +15,7 @@ def vqa(image_path: str, question: str) -> str:
     outputs = model(**inputs)
     idx = outputs.logits.argmax(-1).item()
     return model.config.id2label[idx]
+
 
 # Вызов
 answer = vqa("image copy.png", "who is in the image?")

@@ -10,6 +10,7 @@ logging.basicConfig(level=logging.INFO)
 PRIVATE_COMMANDS = [
     types.BotCommand(command="/start", description="Запустить бота"),
     types.BotCommand(command="/help", description="Справка по командам"),
+    types.BotCommand(command="/photo_to_text", description="Распознать текст с фото"),
 ]
 
 
