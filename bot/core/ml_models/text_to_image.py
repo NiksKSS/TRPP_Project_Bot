@@ -8,6 +8,7 @@ def generate_image(prompt: str, filename: str = "output.png"):
         torch_dtype=torch.float16,
         local_files_only=True,
     )
+    
     pipe = pipe.to("mps")
 
     image = pipe(prompt).images[0]
