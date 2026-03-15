@@ -8,7 +8,7 @@ from bot.core.config import settings
 from ask_from_image import vqa
 from PIL import Image
 
-pytesseract.pytesseract.tesseract_cmd = settings.tesseract_path
+#pytesseract.pytesseract.tesseract_cmd = settings.tesseract_path
 
 ROOT_DIR = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(ROOT_DIR))
