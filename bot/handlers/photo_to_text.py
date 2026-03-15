@@ -36,7 +36,6 @@ async def handle_photo_for_ocr(message: types.Message, state: FSMContext):
                 "❌ Текст не найден на изображении.\n"
                 "Убедитесь, что на фото есть чёткий текст."
             )
-        os.remove(file_path)
         await state.clear()
     except FileNotFoundError:
         await message.answer(
@@ -48,3 +47,6 @@ async def handle_photo_for_ocr(message: types.Message, state: FSMContext):
         )
     except Exception:
         await message.answer("Попробуйте отправить другое фото.")
+    finally:
+        if os.path.exists(file_path):
+            os.remove(file_path)
