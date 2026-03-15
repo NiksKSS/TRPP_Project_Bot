@@ -6,6 +6,7 @@ import logging
 import pytesseract
 from bot.core.config import settings
 from ask_from_image import vqa
+from PIL import Image
 
 pytesseract.pytesseract.tesseract_cmd = settings.tesseract_path
 
@@ -28,7 +29,15 @@ class MLService:
     def generate_image(prompt: str, output_path: str) -> str:
         """Генерация изображения по тексту."""
         logger.info(f"Generating: {prompt} → {output_path}")
-        return generate_image(prompt, output_path)
+        res = generate_image(prompt, output_path)
+        if isinstance(res, Image.Image):
+            logger.info("Received PIL.Image, saving to disk...")
+            res.save(output_path)
+            logger.info(f"Saved image to {output_path}")
+            return output_path
+        if isinstance(res, str):
+            logger.info(f"Received path: {res}")
+            return res
 
     @staticmethod
     def vqa_predict(image_path: str, question: str) -> str:
