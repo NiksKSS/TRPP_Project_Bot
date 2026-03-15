@@ -75,7 +75,7 @@ sudo apt-get install tesseract-ocr tesseract-ocr-rus
 Создайте файл `.env` в корне проекта:
 
 ```env
-BOT_TOKEN=your_bot_token_from_botfather
+TELEGRAM_BOT_TOKEN=your_bot_token_from_botfather
 TESSERACT_PATH=/usr/local/bin/tesseract  # путь к tesseract (macOS/Linux)
 # или C:\Program Files\Tesseract-OCR\tesseract.exe (Windows)
 ```

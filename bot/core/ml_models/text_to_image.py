@@ -13,4 +13,3 @@ def generate_image(prompt: str, filename: str = "output.png"):
     image = pipe(prompt).images[0]
     image.save(filename)
     return image
-

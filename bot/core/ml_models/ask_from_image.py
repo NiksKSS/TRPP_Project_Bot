@@ -1,12 +1,8 @@
 from transformers import ViltProcessor, ViltForQuestionAnswering
 from PIL import Image
 
-processor = ViltProcessor.from_pretrained(
-    "dandelin/vilt-b32-finetuned-vqa"
-)
-model = ViltForQuestionAnswering.from_pretrained(
-    "dandelin/vilt-b32-finetuned-vqa"
-)
+processor = ViltProcessor.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
+model = ViltForQuestionAnswering.from_pretrained("dandelin/vilt-b32-finetuned-vqa")
 
 
 def vqa(image_path: str, question: str) -> str:

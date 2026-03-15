@@ -5,7 +5,7 @@ from aiogram import Router, types, F
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from bot.core.ml_service import ml_service
-from bot.handlers.states import AskImageStates
+from bot.states import AskImageStates
 
 router = Router()
 
@@ -34,7 +34,8 @@ async def handle_photo_for_vqa(message: types.Message, state: FSMContext):
         vqa_sessions[message.from_user.id] = image_path
         await state.set_state(AskImageStates.waiting_for_question)
         await message.answer(
-            "Фото сохранено ✅\n" "Теперь напиши вопрос по этому изображению на английском языке."
+            "Фото сохранено ✅\n"
+            "Теперь напиши вопрос по этому изображению на английском языке."
         )
     except FileNotFoundError:
         await message.answer(
@@ -44,7 +45,10 @@ async def handle_photo_for_vqa(message: types.Message, state: FSMContext):
         vqa_sessions.pop(message.from_user.id, None)
 
 
-@router.message(AskImageStates.waiting_for_question, lambda msg: msg.text and not msg.text.startswith("/"))
+@router.message(
+    AskImageStates.waiting_for_question,
+    lambda msg: msg.text and not msg.text.startswith("/"),
+)
 async def handle_question_for_vqa(message: types.Message, state: FSMContext):
     """Обработка вопроса."""
     user_id = message.from_user.id
