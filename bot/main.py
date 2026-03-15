@@ -17,7 +17,7 @@ PRIVATE_COMMANDS = [
 
 
 async def set_commands(bot: Bot):
-    """Регистрирует команды в Telegram"""
+    """Регистрирует команды в Telegram."""
     await bot.set_my_commands(PRIVATE_COMMANDS)
     logging.info("Команды зарегистрированы в меню")
 

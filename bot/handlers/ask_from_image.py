@@ -34,7 +34,7 @@ async def handle_photo_for_vqa(message: types.Message, state: FSMContext):
         vqa_sessions[message.from_user.id] = image_path
         await state.set_state(AskImageStates.waiting_for_question)
         await message.answer(
-            "Фото сохранено ✅\n" "Теперь напиши вопрос по этому изображению."
+            "Фото сохранено ✅\n" "Теперь напиши вопрос по этому изображению на английском языке."
         )
     except FileNotFoundError:
         await message.answer(
