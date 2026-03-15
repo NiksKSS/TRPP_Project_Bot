@@ -59,6 +59,8 @@ async def handle_question_for_vqa(message: types.Message, state: FSMContext):
     try:
         answer = await asyncio.to_thread(ml_service.vqa_predict, image_path, question)
         await message.answer(f"Вопрос: {question}\n\n" f"Ответ: {answer}")
+        if os.path.exists(image_path):
+            os.remove(image_path)
         vqa_sessions.pop(user_id, None)
         await state.clear()
 

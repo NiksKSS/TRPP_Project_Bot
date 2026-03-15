@@ -30,7 +30,9 @@ async def handle_prompt_for_generation(message: types.Message, state: FSMContext
         )
         image = FSInputFile(result_path)
         await message.answer_photo(photo=image, caption=f"По запросу: «{prompt}»")
-        os.remove(result_path)
         await state.clear()
     except Exception as e:
         await message.answer(f"Ошибка генерации: {type(e).__name__}\n" f"Детали: {e}")
+    finally:
+        if os.path.exists(output_path):
+            os.remove(output_path)
