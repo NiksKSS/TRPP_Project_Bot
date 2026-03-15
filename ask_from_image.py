@@ -1,25 +1,11 @@
 from transformers import ViltProcessor, ViltForQuestionAnswering
 from PIL import Image
 
-# processor = ViltProcessor.from_pretrained(
-#     "dandelin/vilt-b32-finetuned-vqa", local_files_only=True
-# )
-# model = ViltForQuestionAnswering.from_pretrained(
-#     "dandelin/vilt-b32-finetuned-vqa", local_files_only=True
-# )
-
-from transformers import ViltProcessor, ViltForQuestionAnswering
-from PIL import Image
-
-MODEL_PATH = "./vilt-model"
-
 processor = ViltProcessor.from_pretrained(
-    MODEL_PATH,
-    local_files_only=True
+    "dandelin/vilt-b32-finetuned-vqa"
 )
 model = ViltForQuestionAnswering.from_pretrained(
-    MODEL_PATH,
-    local_files_only=True
+    "dandelin/vilt-b32-finetuned-vqa"
 )
 
 
