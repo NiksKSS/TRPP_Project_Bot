@@ -15,6 +15,7 @@ PRIVATE_COMMANDS = [
     ),
     types.BotCommand(command="/text_to_photo", description="🖼️ Сгенерировать картинку"),
     types.BotCommand(command="/ask_from_image", description="💡 Вопрос по фото"),
+    types.BotCommand(command="/cancel", description="❌ Отмена операции"),
 ]
 
 
