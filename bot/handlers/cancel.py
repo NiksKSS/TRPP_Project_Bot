@@ -14,6 +14,7 @@ async def cmd_cancel(message: types.Message, state: FSMContext):
     if not current_state:
         await message.answer("✅ Нет активных операций.\n\n")
         return
+    session_manager.cancel(user_id)
     session_manager.cleanup(user_id)
     await state.clear()
     await message.answer("❌ Операция отменена\n" "Напиши /help для списка команд.")

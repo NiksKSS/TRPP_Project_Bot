@@ -35,7 +35,10 @@ async def handle_photo_for_ocr(message: types.Message, state: FSMContext):
         session_manager.add_file(user_id, file_path)
         logger.info(f"Photo downloaded, starting OCR for user {user_id}")
         text = await asyncio.to_thread(ml_service.ocr_predict, file_path)
-
+        if session_manager.is_cancelled(user_id):
+            logger.info(f"OCR completed but cancelled by user {user_id}, not sending")
+            await state.clear()
+            return
         if text and len(text) > 0:
             logger.info(f"OCR successful for user {user_id}, text length: {len(text)}")
             await message.answer(f"Распознанный текст:\n\n{text}")

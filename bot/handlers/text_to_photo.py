@@ -38,6 +38,12 @@ async def handle_prompt_for_generation(message: types.Message, state: FSMContext
         result_path = await asyncio.to_thread(
             ml_service.generate_image, prompt, output_path
         )
+        if session_manager.is_cancelled(user_id):
+            logger.info(
+                f"Generation completed but cancelled by user {user_id}, not sending"
+            )
+            await state.clear()
+            return
         logger.info(f"Image generated successfully: {result_path}")
         session_manager.add_file(user_id, result_path)
         image = FSInputFile(result_path)

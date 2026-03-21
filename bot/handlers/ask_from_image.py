@@ -68,6 +68,10 @@ async def handle_question_for_vqa(message: types.Message, state: FSMContext):
 
     try:
         answer = await asyncio.to_thread(ml_service.vqa_predict, image_path, question)
+        if session_manager.is_cancelled(user_id):
+            logger.info(f"VQA completed but cancelled by user {user_id}, not sending")
+            await state.clear()
+            return
         if answer and answer.strip():
             await message.answer(f"Вопрос: {question}\n\n" f"Ответ: {answer}")
         else:
