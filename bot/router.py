@@ -1,5 +1,5 @@
 from aiogram import Router
-from handlers import start, help, photo_to_text, text_to_photo, ask_from_image, cancel
+from bot.handlers import start, help, photo_to_text, text_to_photo, ask_from_image, cancel
 
 router = Router()
 
