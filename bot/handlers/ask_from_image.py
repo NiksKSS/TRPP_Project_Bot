@@ -16,9 +16,7 @@ logger = logging.getLogger(__name__)
 async def cmd_ask_from_image(message: types.Message, state: FSMContext):
     await state.set_state(AskImageStates.waiting_for_photo)
     await message.answer(
-        "Режим вопросов по изображению!\n\n"
-        "1️⃣ Отправь фото\n"
-        "2️⃣ Напиши вопрос по этому фото\n\n"
+        "Режим вопросов по изображению!\n\n" "1️⃣ Отправь фото\n" "2️⃣ Напиши вопрос по этому фото\n\n"
     )
 
 
@@ -35,8 +33,7 @@ async def handle_photo_for_vqa(message: types.Message, state: FSMContext):
         session_manager.add_file(user_id, image_path)
         await state.set_state(AskImageStates.waiting_for_question)
         await message.answer(
-            "Фото сохранено ✅\n"
-            "Теперь напиши вопрос по этому изображению на английском языке."
+            "Фото сохранено ✅\n" "Теперь напиши вопрос по этому изображению на английском языке."
         )
 
     except FileNotFoundError:
@@ -55,9 +52,7 @@ async def handle_question_for_vqa(message: types.Message, state: FSMContext):
     user_id = message.from_user.id
     question = message.text.strip()
     if not session_manager.has_session(user_id):
-        await message.answer(
-            "Сначала отправь фото!\n" "Используй команду /ask_from_image"
-        )
+        await message.answer("Сначала отправь фото!\n" "Используй команду /ask_from_image")
         return
     files = session_manager.get_files(user_id)
     if not files:
@@ -75,9 +70,7 @@ async def handle_question_for_vqa(message: types.Message, state: FSMContext):
         if answer and answer.strip():
             await message.answer(f"Вопрос: {question}\n\n" f"Ответ: {answer}")
         else:
-            await message.answer(
-                "️❌ Не удалось получить ответ. Попробуй другой вопрос."
-            )
+            await message.answer("️❌ Не удалось получить ответ. Попробуй другой вопрос.")
         await state.clear()
 
     except Exception as e:

@@ -1,8 +1,54 @@
-__pycache__
+# Git
 .git
-.env
-*.pyc
+.gitignore
+
+# Poetry
+.poetry/
+poetry.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Environments
+.venv/
+venv/
+ENV/
+
+# Testing
+.pytest_cache/
 tests/
+.coverage
+htmlcov/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Cache
+.ruff_cache/
+.black
+.mypy_cache/
+
+# ML Models
+*.bin
+*.safetensors
+*.pth
+*.onnx
+vilt-model/
+
+# Temp & Logs
 temp/
-.DS_Store
-.pytest_cache
+logs/
+*.tmp
+*.log
+output.png
+
+# Docs
+README.md
+LICENSE

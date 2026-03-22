@@ -46,27 +46,20 @@ async def handle_photo_for_ocr(message: types.Message, state: FSMContext):
         else:
             logger.warning(f"No text found in image for user {user_id}")
             await message.answer(
-                "❌ Текст не найден на изображении.\n"
-                "Убедитесь, что на фото есть чёткий текст."
+                "❌ Текст не найден на изображении.\n" "Убедитесь, что на фото есть чёткий текст."
             )
         await state.clear()
     except FileNotFoundError as e:
         logger.error(f"FileNotFoundError for user {user_id}: {file_path} - {e}")
-        await message.answer(
-            "❌ Ошибка: файл не найден. Попробуйте отправить фото ещё раз."
-        )
+        await message.answer("❌ Ошибка: файл не найден. Попробуйте отправить фото ещё раз.")
 
     except PermissionError as e:
         logger.error(f"PermissionError for user {user_id}: {file_path} - {e}")
-        await message.answer(
-            "❌ Ошибка: нет доступа к файлу. Попробуйте отправить фото ещё раз."
-        )
+        await message.answer("❌ Ошибка: нет доступа к файлу. Попробуйте отправить фото ещё раз.")
 
     except Exception as e:
         logger.error(f"Unexpected error for user {user_id}: {type(e).__name__} - {e}")
-        await message.answer(
-            "❌ Произошла ошибка при обработке фото. Попробуйте ещё раз."
-        )
+        await message.answer("❌ Произошла ошибка при обработке фото. Попробуйте ещё раз.")
 
     finally:
         session_manager.cleanup(user_id)

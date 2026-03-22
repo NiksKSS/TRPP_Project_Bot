@@ -43,7 +43,7 @@ conda activate ml-env
 ### 3. Установка зависимостей
 
 ```bash
-pip install -r requirements.txt
+pip install -r r.txt
 ```
 
 ### 4. Установка Tesseract OCR

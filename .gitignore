@@ -1,27 +1,58 @@
+# Python
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+.Python
 
-.pytest_cache/
+# Poetry
+.poetry/
+poetry.lock
 
+# Environments
 .env
+.venv/
 venv/
+ENV/
+env/
 
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Cache
+.ruff_cache/
+.black
+.mypy_cache/
+
+# ML Models & Temp
 models/*.pth
 models/*.bin
 models/*.onnx
-temp/*
-*.tmp
-
-.idea/
-.vscode/
-
-.ruff_cache/
-.black
-
-*.png
-*.jpg
-output.png
-
-vilt-model/
 *.bin
 *.safetensors
+temp/*
+*.tmp
+output.png
+*.png
+*.jpg
+
+# External model folders
+vilt-model/
+
+# Logs
+logs/
+*.log
+
+# Docker
+.dockerignore
